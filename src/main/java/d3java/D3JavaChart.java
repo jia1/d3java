@@ -34,10 +34,10 @@ public class D3JavaChart {
 		}
 	}
 
-	public String getChart(String chartFile, String generatorFunctionName, String dataset) {
+	public String getChart(String chartFile, String chartGeneratorFunctionName, String dataset, String options) {
 		try {
 			engine.eval(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(chartFile)));
-			return ((Invocable) engine).invokeFunction(generatorFunctionName, dataset).toString();
+			return ((Invocable) engine).invokeFunction(chartGeneratorFunctionName, dataset, options).toString();
 		} catch (ScriptException | NoSuchMethodException e) {
 			e.printStackTrace();
 			return null;
